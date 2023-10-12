@@ -1,0 +1,26 @@
+Google Login Integration in PHP
+
+Step1:Go to the following URL:  https://console.developers.google.com/
+
+Step2:  Once you have opened the above link click on create a project and fill the information in create project screen.
+
+Step3:  Click on the OAuth consent screen link,select external and fill the information.
+
+Step4:  After completing page creation, click on credentials, on the credentials page click on create credentials, select the OAuth client ID.
+
+Step5: Ater selecting OAuth client ID following screen appears, on this select web application from the dropdown.
+
+Step6: After the selection of the web application from the dropdown following fields will appear, you have to enter your application name and in authorized redirect URI; you have to enter your domain URL and click on create button.
+
+Step7: After completing the step6 ; copy your client id and client secret and paste it into your google_login library file.
+
+Step8: Download Composer
+
+Step9:Download Google API library
+
+composer require google/apiclient:"^2.0"
+
+
+Step10: set the client id, secret and redirect url in google login library file.  
+
+

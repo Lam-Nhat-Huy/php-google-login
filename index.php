@@ -2,16 +2,15 @@
 
 session_start();
 
-include_once "libraries/vendor/autoload.php";
+include_once "./libraries/vendor/autoload.php";
 
 $google_client = new Google_Client();
 
-$google_client->setClientId('306327846263-1nf0ni542ttol8tsmnktmecqm937bcal.apps.googleusercontent.com'); //Define your ClientID
+$google_client->setClientId('306327846263-1nf0ni542ttol8tsmnktmecqm937bcal.apps.googleusercontent.com');
 
-$google_client->setClientSecret('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'); //Define your Client Secret Key
+$google_client->setClientSecret('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');
 
-$google_client->setRedirectUri('http://localhost:3000/index.php'); //Define your Redirect Uri
-
+$google_client->setRedirectUri('http://localhost:3000/index.php');
 $google_client->addScope('email');
 
 $google_client->addScope('profile');
@@ -43,13 +42,17 @@ if (isset($_GET["code"])) {
 }
 
 
+
 $login_button = '';
 
 // echo $_SESSION['access_token'];
 
-if (!$_SESSION['access_token']) {
-  $login_button = '<a href="' . $google_client->createAuthUrl() . '"><img src="asset/sign-in-with-google.png" /></a>';
-}
+$login_button = "<div style='text-align: center;'>
+                    <a href='" . $google_client->createAuthUrl() . "' style='display: inline-block; padding: 10px 20px; font-family: Arial, sans-serif; font-size: 14px; color: #4285F4; border: 1px solid #4285F4; text-decoration: none; border-radius: 5px;'>
+                        <img src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg' alt='Google Logo' style='height: 20px; vertical-align: middle; margin-right: 10px;'/>
+                        Tiếp tục với Google
+                    </a>
+                </div>";
 
 ?>
 
@@ -57,7 +60,7 @@ if (!$_SESSION['access_token']) {
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Login with Google in PHP</title>
+  <title>Đăng nhập bằng google</title>
   <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport' />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -67,9 +70,6 @@ if (!$_SESSION['access_token']) {
 
 <body>
   <div class="container">
-    <br />
-    <h2 align="center">Login using Google Account with PHP</h2>
-    <br />
     <div class="panel panel-default">
       <?php
       if (!empty($_SESSION['access_token'])) {
